@@ -13,7 +13,9 @@
   <div class="logo">
     <img src="assets/logo.jpg" alt="logo" width="20%">
   </div>
-  <div class="user">Admin: Daniel</div>
+  <div class="user">
+    <label id = "lbusername">username</label>
+  </div>
 </div>
 
 <!-- NAVIGATION -->
@@ -21,10 +23,13 @@
   <button class="menu-toggle">☰</button>
   <nav class="nav">
     <a href="#">Dashboard</a>
-    <a href="#">Courses</a>
-    <a href="#">Students</a>
-    <a href="#">Reports</a>
-    <a href="#">Logout</a>
+    <a href="courses.html">Courses</a>
+    <a href="students.html">Students</a>
+    <a href="admins.html">Admins</a>
+    <a href="gps.html">GPS</a>
+    <a href="reports.html">Reports</a>
+    <a href="#" onclick="logout()">Logout</a>
+    
   </nav>
 </header>
 
@@ -82,6 +87,10 @@
 <footer class="footer">
   <p>© 2026 Elimu Admin Panel</p>
 </footer>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
 
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
@@ -90,6 +99,16 @@
     nav.classList.toggle('active');
     menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
   });
+  let lbusername = document.getElementById('lbusername')
+  auth.onAuthStateChanged((user) =>{
+    if (user){
+        lbusername.innerHTML = user.email
+    }
+    else{
+        window.location.href="index.html"
+    }
+  })
+
 </script>
 
 </body>
