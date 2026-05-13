@@ -38,6 +38,7 @@ btnlogin.addEventListener( "click", ()=> {
         })
         .catch((error) =>{
             alert("Wrong credentials")
+            console.log(error)
             btnlogin.innerHTML = "Log in"
         })
     }
