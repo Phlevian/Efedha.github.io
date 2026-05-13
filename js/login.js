@@ -17,9 +17,9 @@ btnlogin.addEventListener( "click", ()=> {
         .then((snapshot)=>{
             const userDetails = snapshot.val()
             const role =userDetails.Role 
-            const status = userDetails.Status 
+            const status = userDetails.status 
             if ( status == "active"){
-                if (role== Admin){
+                if (role== "Admin"){
                     //Admin
                     window.location.href ="dashboard.html"
                 }
@@ -37,10 +37,9 @@ btnlogin.addEventListener( "click", ()=> {
             }
         })
         .catch((error) =>{
-            alert("Wrong credentials")
+            alert("error messages")
             console.log(error)
             btnlogin.innerHTML = "Log in"
         })
     }
-
 })
